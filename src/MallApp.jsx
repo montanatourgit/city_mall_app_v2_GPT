@@ -101,7 +101,7 @@ function GlobalStyles() {
   return (
     <style>{`
       * { box-sizing: border-box; }
-      body { margin: 0; background: #e7e0d9; }
+      body { margin: 0; background: #e5e5ea; }
       button, input { font: inherit; }
       .stage {
         min-height: 100vh;
@@ -111,8 +111,8 @@ function GlobalStyles() {
         font-family: Inter, "Plus Jakarta Sans", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         color: #2d3335;
         background:
-          linear-gradient(145deg, #e9dfd6 0%, #fbfaf7 48%, #d9d0c8 100%),
-          #e7e0d9;
+          radial-gradient(circle at 50% 18%, rgba(255,255,255,.85), transparent 30%),
+          linear-gradient(145deg, #d9d5d1 0%, #f8f9fa 52%, #cfc8c1 100%);
       }
       .phone {
         width: 390px;
@@ -120,7 +120,7 @@ function GlobalStyles() {
         position: relative;
         overflow: hidden;
         border-radius: 44px;
-        background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,249,250,.95));
+        background: #ffffff;
         box-shadow: 0 26px 90px rgba(32,14,50,.25), 0 0 0 8px #18181b, 0 0 0 10px rgba(255,255,255,.28);
       }
       .notch {
@@ -152,25 +152,27 @@ function GlobalStyles() {
         height: 100%;
         overflow-y: auto;
         scrollbar-width: none;
-        padding: 18px 20px 112px;
+        padding: 0 18px 104px;
       }
       .scroll::-webkit-scrollbar { display: none; }
       .auth-screen {
         height: 100%;
-        padding: 18px 20px 30px;
+        padding: 0 20px 30px;
         display: flex;
         flex-direction: column;
         gap: 18px;
       }
       .glass {
-        background: linear-gradient(135deg, rgba(255,255,255,.76), rgba(255,255,255,.25)), rgba(242,242,242,.62);
-        border: 1px solid rgba(255,255,255,.72);
-        box-shadow: inset 0 1px 0 rgba(255,255,255,.82), inset 0 -18px 42px rgba(45,51,53,.05), 0 12px 32px rgba(32,14,50,.12);
-        backdrop-filter: blur(28px) saturate(1.35);
-        -webkit-backdrop-filter: blur(28px) saturate(1.35);
+        background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(255,255,255,.26)), rgba(242,242,242,.72);
+        border: 1px solid rgba(255,255,255,.76);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.86), inset 0 -18px 42px rgba(45,51,53,.05), 0 10px 28px rgba(32,14,50,.10);
+        backdrop-filter: blur(24px) saturate(1.35);
+        -webkit-backdrop-filter: blur(24px) saturate(1.35);
       }
       .glass-dark {
-        background: linear-gradient(145deg, rgba(38,38,38,.93), rgba(38,38,38,.74)), rgba(250,250,250,.09);
+        background:
+          linear-gradient(145deg, rgba(38,38,38,.93), rgba(38,38,38,.76)),
+          linear-gradient(135deg, rgba(250,250,250,.09), rgba(255,255,255,0));
         border: 1px solid rgba(255,255,255,.26);
         box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -20px 46px rgba(0,0,0,.2), 0 4px 4px rgba(0,0,0,.25);
         color: #fff;
@@ -184,16 +186,21 @@ function GlobalStyles() {
       }
       .tap:active { transform: scale(.97); }
       .topbar {
-        min-height: 54px;
+        height: 64px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 12px;
-        margin-bottom: 8px;
+        margin: 0 -18px 16px;
+        padding: 0 24px;
+        background: rgba(248,250,252,.8);
+        border-bottom: 1px solid rgba(255,255,255,.5);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
       }
       .brand {
         text-align: center;
-        font-size: 17px;
+        font-size: 18px;
         font-weight: 650;
         color: #59618c;
         letter-spacing: 2.5px;
@@ -215,7 +222,7 @@ function GlobalStyles() {
       }
       h1, h2, h3, p { margin: 0; }
       h1 { color: #2d3335; font-size: 30px; line-height: 1.05; font-weight: 820; letter-spacing: 0; }
-      h2 { color: #2d3335; font-size: 24px; line-height: 1.14; font-weight: 820; letter-spacing: 0; }
+      h2 { color: #2d3335; font-size: 24px; line-height: 1.12; font-weight: 820; letter-spacing: -0.6px; }
       h3 { color: #2d3335; font-size: 17px; line-height: 1.2; font-weight: 800; letter-spacing: 0; }
       p { color: #5a6062; font-size: 13px; line-height: 1.45; }
       .section { display: grid; gap: 12px; margin-top: 18px; }
@@ -302,7 +309,7 @@ function GlobalStyles() {
       .mini svg { color: #5c34f6; }
       .mini span { color: #2d3335; font-size: 12px; font-weight: 820; line-height: 1.2; }
       .hero-offer {
-        min-height: 230px;
+        min-height: 445px;
         border-radius: 24px;
         padding: 20px;
         position: relative;
@@ -312,11 +319,14 @@ function GlobalStyles() {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(135deg, rgba(255,80,4,.38), transparent 44%), linear-gradient(315deg, rgba(0,191,255,.3), transparent 42%);
+        background:
+          radial-gradient(circle at 82% 22%, rgba(255,80,4,.55), transparent 28%),
+          radial-gradient(circle at 22% 78%, rgba(0,191,255,.34), transparent 30%),
+          linear-gradient(135deg, rgba(250,250,250,.08), rgba(255,255,255,0));
       }
       .offer-content { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
       .offer-title { color: #fff; font-size: 32px; line-height: 1; font-weight: 860; text-transform: uppercase; }
-      .discount { color: #fff; font-size: 30px; line-height: 1; font-style: italic; font-weight: 860; text-align: right; }
+      .discount { color: #fff; font-size: 32px; line-height: 1; font-style: italic; font-weight: 860; text-align: right; }
       .chip {
         min-height: 34px;
         border-radius: 999px;
@@ -334,8 +344,8 @@ function GlobalStyles() {
         border-radius: 18px;
         padding: 15px;
       }
-      .store-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-      .store-card { min-height: 148px; border-radius: 18px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; position: relative; }
+      .store-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .store-card { min-height: 172px; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; position: relative; }
       .store-card::after {
         content: "";
         position: absolute;
@@ -360,8 +370,8 @@ function GlobalStyles() {
         left: 50%;
         bottom: 20px;
         transform: translateX(-50%);
-        width: 330px;
-        min-height: 62px;
+        width: 240px;
+        min-height: 56px;
         border-radius: 999px;
         display: flex;
         align-items: center;
@@ -369,8 +379,8 @@ function GlobalStyles() {
         z-index: 30;
       }
       .tab {
-        width: 56px;
-        height: 48px;
+        width: 42px;
+        height: 42px;
         border-radius: 999px;
         color: #a1a1aa;
         background: transparent;
@@ -379,10 +389,10 @@ function GlobalStyles() {
         align-items: center;
         justify-content: center;
         gap: 2px;
-        font-size: 9px;
+        font-size: 0;
         font-weight: 820;
       }
-      .tab.active { color: #2d3335; background: rgba(255,255,255,.76); }
+      .tab.active { color: #2d3335; background: rgba(255,255,255,.78); }
       .map-canvas {
         height: 420px;
         border-radius: 26px;
@@ -573,15 +583,14 @@ function Home({ go }) {
       </div>
       <section className="hero-offer glass-dark tap" onClick={() => go("offer")}>
         <div className="offer-content">
-          <div className="between" style={{ color: "rgba(255,255,255,.78)", fontSize: 11, fontWeight: 820, textTransform: "uppercase" }}>
-            <span>Exclusive event</span>
-            <span>30% OFF</span>
+          <div className="between" style={{ alignItems: "start" }}>
+            <span style={{ color: "rgba(255,255,255,.78)", fontSize: 10, fontWeight: 820, letterSpacing: 1, textTransform: "uppercase" }}>Exclusive event</span>
+            <div className="discount">30%<br />OFF</div>
           </div>
-          <div className="between" style={{ alignItems: "end" }}>
+          <div>
             <h2 className="offer-title">Exclusive<br />Summer<br />Offer</h2>
-            <div className="discount">30% OFF</div>
+            <p style={{ color: "rgba(255,255,255,.78)", marginTop: 14 }}>Zara, Adidas, LC Waikiki and food court perks all week.</p>
           </div>
-          <p style={{ color: "rgba(255,255,255,.78)" }}>Zara, Adidas, LC Waikiki and food court perks all week.</p>
         </div>
       </section>
       <section className="section">
