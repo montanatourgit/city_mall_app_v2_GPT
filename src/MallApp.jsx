@@ -371,28 +371,61 @@ function GlobalStyles() {
         bottom: 20px;
         transform: translateX(-50%);
         width: 240px;
-        min-height: 56px;
+        height: 56px;
         border-radius: 999px;
         display: flex;
         align-items: center;
         justify-content: space-around;
         z-index: 30;
+        padding: 6px 10px;
+        background: rgba(242, 242, 242, .92);
+        border: 1px solid rgba(255,255,255,.72);
+        box-shadow:
+          inset 0 10px 40px rgba(45,51,53,.06),
+          inset 0 1px 0 rgba(255,255,255,.25),
+          0 16px 38px rgba(32,14,50,.16);
+        backdrop-filter: blur(40px) saturate(1.45);
+        -webkit-backdrop-filter: blur(40px) saturate(1.45);
       }
       .tab {
-        width: 42px;
-        height: 42px;
+        width: 36px;
+        height: 36px;
         border-radius: 999px;
         color: #a1a1aa;
         background: transparent;
+        border: 0;
         display: inline-flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 2px;
-        font-size: 0;
-        font-weight: 820;
+        position: relative;
+        padding: 0;
       }
-      .tab.active { color: #2d3335; background: rgba(255,255,255,.78); }
+      .tab svg { width: 23px; height: 23px; stroke-width: 1.9; }
+      .tab.active {
+        color: #2d3335;
+        background: rgba(255,255,255,.78);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 6px 18px rgba(45,51,53,.1);
+      }
+      .tab.active::before {
+        content: "";
+        position: absolute;
+        top: -7px;
+        left: 50%;
+        width: 16px;
+        height: 2px;
+        border-radius: 999px;
+        transform: translateX(-50%);
+        background: #2d3335;
+        opacity: .86;
+      }
+      .tab span {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+      }
       .map-canvas {
         height: 420px;
         border-radius: 26px;
@@ -476,10 +509,10 @@ function TopBar({ title = "Tashkent City Mall", back, go, action = "bell" }) {
 
 function BottomTabs({ screen, go }) {
   return (
-    <nav className="tabbar glass">
+    <nav className="tabbar" aria-label="Bottom navigation">
       {tabs.map((tab) => (
-        <button key={tab.id} className={`tap tab ${screen === tab.id ? "active" : ""}`} onClick={() => go(tab.id)}>
-          <Icon name={tab.icon} size={19} />
+        <button key={tab.id} className={`tap tab ${screen === tab.id ? "active" : ""}`} onClick={() => go(tab.id)} aria-label={tab.label} title={tab.label}>
+          <Icon name={tab.icon} size={23} />
           <span>{tab.label}</span>
         </button>
       ))}
