@@ -1001,7 +1001,7 @@ function EmptyState({ go }) {
 }
 
 export default function MallAIApp() {
-  const [screen, setScreen] = useState("login");
+  const [screen, setScreen] = useState("home");
   const go = (next) => setScreen(next);
 
   const current = useMemo(() => {
